@@ -1,4 +1,5 @@
 import re
+import sys
 
 def match(regex: str, string: str):
     """
@@ -10,3 +11,15 @@ def match(regex: str, string: str):
     string: str -- Cadena en la cual buscar el patrón
     """
     return (re.compile(regex).search(string) is not None)
+
+
+def SyntaxError(msg: str):
+    """
+    Detiene la ejecución y reporta un error de sintaxis.
+
+    Args
+    ----
+    msg: Mensaje a mostrar
+    """
+    print("SyntaxError:", msg)
+    sys.exit(1)
