@@ -1,7 +1,0 @@
-TO f :a :b
-OUTPUT
-MOVE :a
-END
-IF !BLOCKEDP [
-    DEFINE one 2
-]
