@@ -4,6 +4,7 @@
 * Julian Ferreira - 202012068 - jm.ferreira@uniandes.edu.cp
 * Juan Esteban Arboleda - 201921578 - j.arboleda@uniandes.edu.co
 
+## DESCRIPCIÓN ##
 Este programa permite revisar que un archivo de texto sea sintácticamente correcto, de acuerdo con el estandar definido en el enunciado del proyecto.
 
 ## COMO USARLO ##
