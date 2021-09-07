@@ -1,4 +1,4 @@
-import utils
+import model.utils as utils
 
 class queue:
 
@@ -6,7 +6,7 @@ class queue:
 
 
     def __init__(self, queue: list = []):
-        self.__qList = list
+        self.__qList = queue
 
     def enqueue(self, element):
         self.__qList.append(element)
@@ -26,7 +26,7 @@ class queue:
 
     
     def peek(self):
-        if self.size == 0:
+        if self.size() == 0:
             return None
         return self.__qList[0]
     
@@ -36,7 +36,7 @@ class stack:
 
 
     def __init__(self, stack: list = []):
-        self.__sList = list
+        self.__sList = stack
     
 
     def push(self, element):
@@ -57,7 +57,7 @@ class stack:
 
     
     def top(self):
-        if self.size == 0:
+        if self.size() == 0:
             return None
         return self.__sList[-1]
     

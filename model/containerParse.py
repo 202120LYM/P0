@@ -3,13 +3,13 @@ Este modulo perime analizar la sitaxis de cadenas de tipo (BLOCK <commands>).
 Las cadenas de este tipo comienzan con '(BLOCK' y terminan con ')'.
 <commands> son cadenas de comandos, separadas por \\n.
 """
-from main import SCOPE
-from main import DEFINED_VARS
-from main import DEFINED_FUNCS
-import utils as u
-import dataStr.lists as lt
-import tipos as ty
-import lineCmdParse as lc
+from model.mainParser import SCOPE
+from model.mainParser import DEFINED_VARS
+from model.mainParser import DEFINED_FUNCS
+import model.utils as u
+import model.dataStr.lists as lt
+import model.tipos as ty
+import model.lineCmdParse as lc
 
 
 def parseBlock():
@@ -78,7 +78,7 @@ def parseTo(paramTokens: lt.queue, funcName: str, outputToken: str):
     acceptedTokens = []
 
     if SCOPE.top() != None:
-        u.SyntaxError("No se pueden declarar funciones dentro de un ", SCOPE.top())
+        u.SyntaxError("No se pueden declarar funciones dentro de un " + SCOPE.top())
     while paramTokens.size() != 0:
         token = paramTokens.dequeue()
         parseFuncParam(token)
@@ -97,7 +97,7 @@ def parseFuncParam(token: str):
     """
     global DEFINED_VARS
     global SCOPE
-    if not u.match("^:(.)*$"):
+    if not u.match("^:(.)*$", token):
         u.SyntaxError("Se esperaba un parámetro de la forma :param, pero se recibió " + token)
     if token in DEFINED_VARS:
         u.SyntaxError("No se pueden declarar dos parámetros con el mismo nombre: " + token)

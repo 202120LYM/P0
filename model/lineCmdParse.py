@@ -5,10 +5,9 @@ comando  deben estar contenidas en una sola linea, y sus tokens se separan por l
 El metodo parseCommand recibe una cadena con 1 comando y retorna True
 si el comando es sintacticamente correcto, o False de lo contrario.
 """
-from main import DEFINED_VARS, SCOPE
-import re
-import tipos as ty
-import utils as u
+from model.mainParser import DEFINED_VARS, SCOPE
+import model.tipos as ty
+import model.utils as u
 
 def parseNCommand(nParam: str):
     """
@@ -26,7 +25,7 @@ def parseNCommand(nParam: str):
     bool -- True si es sintacticamente correcto o False de lo contrario.
     """
     # Revisa que el parámetro sea de tipo n
-    if not ty.isN(nParam): u.SyntaxError(nParam + "no es un número o una variable preciamente definida")
+    if not ty.isN(nParam): u.SyntaxError(nParam + " no es un número o una variable previamente definida")
     return
 
 
@@ -80,7 +79,7 @@ def parseDefineCommand(nParam: str, valParam: str):
     global SCOPE
 
     if SCOPE.top() != None:
-        u.SyntaxError("La variable " + nParam + " no puede ser definida dentro de un " + SCOPE.top())
+        u.SyntaxError("No se pueden definir variables dentro de un " + SCOPE.top())
     elif not nParam.islower():
         u.SyntaxError("El nombre de variable " + nParam + " debe ser en minúscula.")
     elif not ty.isPositiveInt(valParam):
@@ -88,3 +87,8 @@ def parseDefineCommand(nParam: str, valParam: str):
     else:
         DEFINED_VARS[nParam] = valParam
 
+
+def parseFuncCall(params: list):
+    for param in params:
+        if not ty.isN(param):
+            u.SyntaxError(param + " no es un número entero o una variable previamente definida.")

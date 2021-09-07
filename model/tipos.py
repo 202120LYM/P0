@@ -1,6 +1,6 @@
-from main import DEFINED_VARS
-from main import SCOPE
-import utils as u
+from model.mainParser import DEFINED_VARS
+from model.mainParser import SCOPE
+import model.utils as u
 
 def isDefinedVar(token: str):
     """

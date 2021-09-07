@@ -21,5 +21,5 @@ def SyntaxError(msg: str):
     ----
     msg: Mensaje a mostrar
     """
-    print("SyntaxError:", msg)
+    input("SyntaxError: " + msg + "  ")
     sys.exit(1)
